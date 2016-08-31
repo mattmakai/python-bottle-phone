@@ -10,8 +10,8 @@ app = bottle.default_app()
 # environment variables
 twilio_client = TwilioRestClient()
 
-TWILIO_NUMBER = os.environ.get('TWILIO_NUMBER', '+12025551234')
-NGROK_BASE_URL = os.environ.get('NGROK_BASE_URL', 'https://c6c6d4e8.ngrok.io')
+TWILIO_NUMBER = os.environ.get('TWILIO_NUMBER', '+16093002984')
+NGROK_BASE_URL = os.environ.get('NGROK_BASE_URL', 'https://829e7b00.ngrok.io')
 
 
 @route('/')
@@ -42,7 +42,7 @@ def outbound_call(outbound_phone_number):
     # the url must match the Ngrok Forwarding URL plus the route defined in
     # the previous function that responds with TwiML instructions
     twilio_client.calls.create(to=outbound_phone_number,
-                               from_=BLOG_POST_NUMBER,
+                               from_=TWILIO_NUMBER,
                                url=NGROK_BASE_URL + '/twiml')
     return Response('phone call placed to ' + outbound_phone_number + '!')
 
